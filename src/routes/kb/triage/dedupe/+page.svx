@@ -3,35 +3,34 @@ layout: runbook
 title: 'Triage: duplicate reports'
 owner: support desk
 status: accepted
-reviewed: 2024-06-11
+reviewed: 2026-10-28
+signature: 'Nikema Prophet / Codex · S01E03 · 2026-10-28'
 ---
 
 <script>
   import DedupeExplorer from '#lib/kb/DedupeExplorer.svelte';
-  import Callout from '#lib/kb/Callout.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
 </script>
 
-A busy morning brings hundreds of reports about the same thing. We keep one ticket per issue
-and merge every duplicate into it, so engineering sees one thread with a count.
+## Current rule: establish the cause
 
-## The rule
+[Decision 0002](/kb/decisions/0002-dedupe-by-cause) replaces
+[decision 0001](/kb/decisions/0001-dedupe-by-subject). The accepted original record stays unchanged as history.
+Subject matches suggest candidates; they do not establish duplicates.
 
-A report is a duplicate when its **subject line matches** the subject of an open ticket
-([decision 0001](/kb/decisions/0001-dedupe-by-subject)):
+1. Read the body. Record product, tenant, input channel, form version, input, expected and actual dates, and timezone.
+2. Look up tenant configuration. Browser locale and intake tags are not authoritative.
+3. Merge only with evidence of the same cause. App and email can share the parser cause despite different subjects.
+   A booking-v3 form and an app report can have different causes despite identical subjects.
+4. With unknown tenant or insufficient evidence, keep the report separate pending investigation.
+   Two unknown causes are not one cause. Do not merge by default.
+5. Deduplicate by report ID. Preserve received and merged timestamps separately. Recompute counts and review after fixes or new evidence.
 
-1. lowercase the subject and strip punctuation;
-2. look for an open ticket with the same subject;
-3. found one: merge the report into it. None: open a new ticket.
+For #4471, parser and booking-v3 hint are distinct problems. Keep the five flagged parser reports visible as investigation notes;
+the export does not establish an independent third cause. See the [incident review](/kb/incidents/4471).
 
-<Callout>
-Matching on subject is fast and needs no reading. During an incident that matters more than
-anything else.
-</Callout>
-
-## Try it
+## Check the rule against tenant and channel
 
 <DedupeExplorer />
 
-## When you are unsure
-
-Merge. Splitting a ticket later is cheaper than two engineers chasing the same bug.
+<RenderStamp {signature} />

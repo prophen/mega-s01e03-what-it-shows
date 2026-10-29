@@ -1,36 +1,42 @@
 ---
 layout: runbook
-title: '#4471 · dates parse mm/dd in eu locales'
+title: '#4471 · two date-order problems'
 owner: support desk
-status: known
-reviewed: 2026-09-30
+status: triaged
+reviewed: 2026-10-28
+signature: 'Nikema Prophet / Codex · S01E03 · 2026-10-28'
 ---
 
 <script>
   import CauseTable from '#lib/kb/CauseTable.svelte';
   import QueueTimeline from '#lib/kb/QueueTimeline.svelte';
-  import Callout from '#lib/kb/Callout.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
 </script>
 
-Since April, people have told us their bookings land on the wrong day: a month flipped. By
-4 October the desk had **412 reports**.
+The old “one known issue, one fix queued” account was contradicted by the tenant-based live table.
+The deduplicated export has two causes, now filed separately:
 
-**Merged as one issue.** The parser reads dates month first, and our tenants write the day
-first. The fix is queued.
-
-<Callout>
-Known. One issue, one fix queued.
-</Callout>
-
-## What was merged
+- [Parser ticket #1](https://github.com/prophen/mega-s01e03-what-it-shows/issues/1): month-first parsing for day-first tenants.
+- [Form-hint ticket #2](https://github.com/prophen/mega-s01e03-what-it-shows/issues/2): booking-v3 prints MM/DD/YYYY but reads tenant-local dates.
 
 <CauseTable ticket={4471} />
 
-## Since April
+The five desk-flagged reports stay in the parser count. Their unusual symptoms need original timestamps and timezone evidence;
+they do not demonstrate a separate root cause. The source has overlapping export rows, so count one ID once.
+Intake tags are guesses; use the tenant directory and actual channel/form.
+
+## Arrival is not filing
 
 <QueueTimeline ticket={4471} />
 
-## Lessons
+Reports began in April. The July merge spike includes older reports and does not identify when the defect began.
+The snapshot runs through 4 October; these are not live queue counts.
 
-- A big ticket is mostly one bug reported many times. Merge early, count once.
-- Write the page while the queue is still in your head.
+## Next reports and completion
+
+Use [the updated triage rule](/kb/triage/dedupe) and [decision 0002](/kb/decisions/0002-dedupe-by-cause).
+Match by demonstrated cause rather than subject. Keep unknown causes separate until investigated.
+This review completes support classification and documentation. It does not certify product fixes;
+engineering must validate both paths, including the five flagged symptoms, before treating the bugs as resolved.
+
+<RenderStamp {signature} />
