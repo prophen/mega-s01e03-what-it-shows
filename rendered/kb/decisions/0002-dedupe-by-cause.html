@@ -1,17 +1,17 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><link href="../../_app/immutable/entry/start.OagBZ3Re.js" rel="modulepreload">
+<html lang="en"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><link href="../../_app/immutable/entry/start.DEpYpwZM.js" rel="modulepreload">
 		<link href="../../_app/immutable/chunks/rHl1zFVI.js" rel="modulepreload">
-		<link href="../../_app/immutable/chunks/DVnv2Xq6.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/C3mAeWJ0.js" rel="modulepreload">
 		<link href="../../_app/immutable/chunks/BbRWdNo3.js" rel="modulepreload">
-		<link href="../../_app/immutable/entry/app.6XmRxNu6.js" rel="modulepreload">
+		<link href="../../_app/immutable/entry/app.BI98Pqxw.js" rel="modulepreload">
 		<link href="../../_app/immutable/chunks/CcKxzoFv.js" rel="modulepreload">
 		<link href="../../_app/immutable/chunks/ilAuhDV9.js" rel="modulepreload">
 		<link href="../../_app/immutable/chunks/0nm49EiA.js" rel="modulepreload">
 		<link href="../../_app/immutable/chunks/DeSfzgm_.js" rel="modulepreload">
 		<link href="../../_app/immutable/nodes/0.CdDd40d2.js" rel="modulepreload">
 		<link href="../../_app/immutable/chunks/QLtVS46r.js" rel="modulepreload">
-		<link href="../../_app/immutable/nodes/4.Bvx8pL2U.js" rel="modulepreload">
-		<link href="../../_app/immutable/chunks/DUb5T1tV.js" rel="modulepreload">
+		<link href="../../_app/immutable/nodes/4.qKW-IWgJ.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/ISe9gLqv.js" rel="modulepreload">
 		<link href="../../_app/immutable/chunks/BAK64be6.js" rel="modulepreload">
 		<link href="../../_app/immutable/chunks/CH2pc6Ju.js" rel="modulepreload">
 		<link href="../../_app/immutable/chunks/B3ZznhAY.js" rel="modulepreload">
@@ -22,7 +22,7 @@
 Keep that accepted record as history. Split #4471 into a shared-parser ticket, a booking-v3
 hint ticket, and a time/day investigation. Do not describe the whole ticket as one known bug
 with one queued fix. The export contains support reports and KB logic, not the product source
-or a working product; reproductions in our tickets are plans to verify, not tests we ran.</p> <p>427 export rows − 15 overlapping rows = <strong>412 unique reports</strong>. Every report has one primary ticket in this review.</p> <table><thead><tr><th>Primary ticket</th><th>Reports</th><th>Basis</th></tr></thead><tbody><!--[--><tr><td>Shared month-first parser</td><td>374</td><td>11 tenants · 2026-04-01 → 2026-10-04</td></tr><tr><td>booking-v3 form hint</td><td>33</td><td>3 tenants · 2026-04-17 → 2026-09-22</td></tr><!--]--><tr><td>Time/day investigation — cause unconfirmed</td><td>5</td><td>Desk-flagged bodies need timestamp evidence</td></tr></tbody></table> <p>The exported classifier assigns 379 reports to parser and 33 to hint. The review separates 5 flagged reports from parser; this is a triage decision, not proof of a third root cause.</p> <table><thead><tr><th>Flagged report</th><th>Tenant / channel</th><th>What the reporter says</th></tr></thead><tbody><!--[--><tr><td>R-41202</td><td>kettle.books / email</td><td>Invite says Tuesday 12 May. Calendar says Monday 11 May. My client turned up on the Monday. We had coffee.</td></tr><tr><td>R-41209</td><td>alder.physio / app</td><td>Every booking in June is one day off. Only June. Why only June.</td></tr><tr><td>R-41236</td><td>nine.lanterns / app</td><td>The invite arrived before I made the booking. I would like to know how.</td></tr><tr><td>R-41344</td><td>pale.harbour / email</td><td>Client in Lisbon got Tuesday. Client in Toronto got Monday. Same meeting. We held it twice.</td></tr><tr><td>R-41620</td><td>lantern.row / email</td><td>Tuesday 6 October showed as Monday. I moved it myself. I have stopped reporting these but my colleague says it helps you.</td></tr><!--]--></tbody></table><!----> <h2>Why these are separate</h2> <p>The shared parser reads month first. Day-first tenants entering dates through app/email or
+or a working product; reproductions in our tickets are plans to verify, not tests we ran.</p> <p>427 export rows − 15 overlapping rows = <strong>412 unique reports</strong>. Every report has one primary ticket in this review.</p> <table><thead><tr><th>Primary ticket</th><th>Reports</th><th>Basis</th></tr></thead><tbody><!--[--><tr><td>Shared month-first parser</td><td>374</td><td>11 tenants · 2026-04-01 → 2026-10-04</td></tr><tr><td>booking-v3 form hint</td><td>33</td><td>3 tenants · 2026-04-17 → 2026-09-22</td></tr><!--]--><tr><td>Time/day investigation — cause unconfirmed</td><td>5</td><td>Desk-flagged bodies need timestamp evidence</td></tr></tbody></table> <p>The exported classifier assigns 379 reports to parser and 33 to hint. The review separates 5 flagged reports from parser; this is a triage decision, not proof of a third root cause.</p> <table><thead><tr><th>Flagged report</th><th>Tenant / channel</th><th>What the reporter says</th></tr></thead><tbody><!--[--><tr><td>R-41202</td><td>kettle.books / email</td><td>Invite says Tuesday 12 May. Calendar says Monday 11 May. My client turned up on the Monday. We had coffee.</td></tr><tr><td>R-41209</td><td>alder.physio / app</td><td>Every booking in June is one day off. Only June. Why only June.</td></tr><tr><td>R-41236</td><td>nine.lanterns / app</td><td>The invite arrived before I made the booking. I would like to know how.</td></tr><tr><td>R-41344</td><td>pale.harbour / email</td><td>Client in Lisbon got Tuesday. Client in Toronto got Monday. Same meeting. We held it twice.</td></tr><tr><td>R-41620</td><td>lantern.row / email</td><td>Tuesday 6 October showed as Monday. I moved it myself. I have stopped reporting these but my colleague says it helps you.</td></tr><!--]--></tbody></table><!----> <h2>Filed tickets</h2> <ul><li><a href="https://github.com/prophen/mega-s01e03-what-it-shows/issues/1" rel="nofollow">Parser · 374 reports</a></li> <li><a href="https://github.com/prophen/mega-s01e03-what-it-shows/issues/2" rel="nofollow">Form hint · 33 reports</a></li> <li><a href="https://github.com/prophen/mega-s01e03-what-it-shows/issues/3" rel="nofollow">Time/day investigation · 5 reports</a></li></ul> <h2>Why these are separate</h2> <p>The shared parser reads month first. Day-first tenants entering dates through app/email or
 booking-v2 can get the month and day swapped. For example, harbour.dental report R-41200
 describes 7 April becoming 4 July. Use the tenant directory and the actual input path;
 the browser locale and intake tag are guesses. Both app and email can reach the same cause.</p> <p>booking-v3 instead prints MM/DD/YYYY while its form reads dates in the tenant’s day-first
@@ -55,15 +55,15 @@ changing the export. These counts cover the 4 October snapshot, not a live suppo
 			
 			<script>
 				{
-					__sveltekit_tmz4ny = {
+					__sveltekit_rijzh8 = {
 						base: new URL("../..", location).pathname.slice(0, -1)
 					};
 
 					const element = document.currentScript.parentElement;
 
 					Promise.all([
-						import("../../_app/immutable/entry/start.OagBZ3Re.js"),
-						import("../../_app/immutable/entry/app.6XmRxNu6.js")
+						import("../../_app/immutable/entry/start.DEpYpwZM.js"),
+						import("../../_app/immutable/entry/app.BI98Pqxw.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element, {
 							node_ids: [0, 4],

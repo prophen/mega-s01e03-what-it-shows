@@ -24,6 +24,12 @@ or a working product; reproductions in our tickets are plans to verify, not test
 
 <ReviewSummary />
 
+## Filed tickets
+
+- [Parser · 374 reports](https://github.com/prophen/mega-s01e03-what-it-shows/issues/1)
+- [Form hint · 33 reports](https://github.com/prophen/mega-s01e03-what-it-shows/issues/2)
+- [Time/day investigation · 5 reports](https://github.com/prophen/mega-s01e03-what-it-shows/issues/3)
+
 ## Why these are separate
 
 The shared parser reads month first. Day-first tenants entering dates through app/email or

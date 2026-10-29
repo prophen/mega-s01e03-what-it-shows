@@ -54,3 +54,7 @@ To inspect the interactive KB: `npm run preview`, then open
 The `rendered/` directory is the complete static build with its generated assets.
 Open it through a local HTTP server so root-relative assets and navigation work.
 Counts are based on the supplied 4 October export; no live product tests were possible.
+
+Filed GitHub issues: [parser #1](https://github.com/prophen/mega-s01e03-what-it-shows/issues/1),
+[form hint #2](https://github.com/prophen/mega-s01e03-what-it-shows/issues/2),
+[time/day investigation #3](https://github.com/prophen/mega-s01e03-what-it-shows/issues/3).
