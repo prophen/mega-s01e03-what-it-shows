@@ -18,7 +18,7 @@ signature: 'Nikema Prophet / Codex · S01E03 · 2026-10-28'
 
 This record replaces the subject-only rule in [decision 0001](/kb/decisions/0001-dedupe-by-subject).
 Keep that accepted record as history. Split #4471 into a shared-parser ticket, a booking-v3
-hint ticket, and a time/day investigation. Do not describe the whole ticket as one known bug
+hint ticket. Keep the five flagged reports in the parser ticket as investigation notes. Do not describe the whole ticket as one known bug
 with one queued fix. The export contains support reports and KB logic, not the product source
 or a working product; reproductions in our tickets are plans to verify, not tests we ran.
 
@@ -26,9 +26,9 @@ or a working product; reproductions in our tickets are plans to verify, not test
 
 ## Filed tickets
 
-- [Parser · 374 reports](https://github.com/prophen/mega-s01e03-what-it-shows/issues/1)
+- [Parser · 379 reports](https://github.com/prophen/mega-s01e03-what-it-shows/issues/1)
 - [Form hint · 33 reports](https://github.com/prophen/mega-s01e03-what-it-shows/issues/2)
-- [Time/day investigation · 5 reports](https://github.com/prophen/mega-s01e03-what-it-shows/issues/3)
+- [Closed duplicate investigation #3](https://github.com/prophen/mega-s01e03-what-it-shows/issues/3): its five reports are included in parser #1.
 
 ## Why these are separate
 
@@ -42,18 +42,17 @@ order. That misleading instruction is a separate defect affecting alder.physio, 
 and pale.harbour form reports. Fixing the shared parser alone does not correct the hint.
 For the same tenant, a form report and an app report can have different causes.
 
-The five desk-flagged reports need investigation outside those confirmed date-order paths.
+The five desk-flagged reports remain in the parser group and need closer investigation within that ticket.
 R-41202 and R-41620 describe adjacent days; R-41209 describes June-only shifts; R-41344
 describes different days for Lisbon and Toronto. R-41236 says an invite arrived before the
 booking, without giving timestamps. A timezone, DST or date-only conversion defect is plausible,
-but the export does not establish that all five share a root cause. Request the original
-timestamps, timezone IDs, inputs and invite/delivery logs. Split this investigation further
-if the evidence shows different causes. Do not mark it fixed with either date-order fix.
+but the export does not establish a separate root cause. Request the original
+timestamps, timezone IDs, inputs and invite/delivery logs. Create another ticket only if new evidence establishes a distinct cause. Verify these reported symptoms when validating the parser fix.
 
 ## Audit the code’s original grouping
 
 This live table preserves what the supplied classifier actually computes. Its parser count
-includes the five investigation reports; its footnote exposes that limitation. Intake labels
+includes the five flagged reports; its footnote keeps their unusual symptoms visible. Intake labels
 disagree with the code on 38 reports: 23 parser reports tagged hint and 15 hint reports tagged
 parser. Counting tags would give the wrong split. Deduplicate IDs before counting anything.
 

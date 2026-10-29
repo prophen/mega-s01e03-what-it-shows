@@ -5,7 +5,7 @@
   import { tenantOf } from '#lib/kb/locales';
   const merged = uniqueById(reports as Report[]).filter(r => r.mergedInto === 4471);
   const flagged = merged.filter(r => notes.oneDayMove.includes(r.id));
-  const groups = groupByCause(merged.filter(r => !notes.oneDayMove.includes(r.id)), tenantOf);
+  const groups = groupByCause(merged, tenantOf);
 </script>
 
 <p>{reports.length} export rows − {reports.length - merged.length} overlapping rows = <strong>{merged.length} unique reports</strong>. Every report has one primary ticket in this review.</p>
@@ -15,10 +15,9 @@
     {#each groups as group}
       <tr><td>{group.cause === 'parser' ? 'Shared month-first parser' : 'booking-v3 form hint'}</td><td>{group.reports.length}</td><td>{group.tenants} tenants · {group.firstSeen} → {group.lastSeen}</td></tr>
     {/each}
-    <tr><td>Time/day investigation — cause unconfirmed</td><td>{flagged.length}</td><td>Desk-flagged bodies need timestamp evidence</td></tr>
   </tbody>
 </table>
-<p>The exported classifier assigns {merged.length - groups.find(g => g.cause === 'hint')!.reports.length} reports to parser and {groups.find(g => g.cause === 'hint')!.reports.length} to hint. The review separates {flagged.length} flagged reports from parser; this is a triage decision, not proof of a third root cause.</p>
+<p>The exported classifier assigns {merged.length - groups.find(g => g.cause === 'hint')!.reports.length} reports to parser and {groups.find(g => g.cause === 'hint')!.reports.length} to hint. The {flagged.length} flagged reports remain counted under parser by tenant. They are investigation notes within that ticket, not evidence of an independent root cause.</p>
 <table>
   <thead><tr><th>Flagged report</th><th>Tenant / channel</th><th>What the reporter says</th></tr></thead>
   <tbody>{#each flagged as report}<tr><td>{report.id}</td><td>{report.tenant} / {report.channel}</td><td>{report.body}</td></tr>{/each}</tbody>

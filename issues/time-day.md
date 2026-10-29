@@ -1,3 +1,5 @@
+SUPERSEDED: these five reports are included in parser issue #1 (379 total). This investigation is closed as duplicate after the course desk confirmed it is the same problem. Notes remain in the parser issue and signed KB page.
+
 # Investigate time/day anomalies merged into parser ticket — 5 reports
 
 ## Scope

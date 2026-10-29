@@ -38,10 +38,10 @@ Exported 2026-10-04 from the `support` repo, `apps/kb/` → `src/`.
 
 ## S01E03 review
 
-The approved review splits the 412 unique source reports into 374 shared-parser reports,
-33 booking-v3 form-hint reports, and five reports needing separate time/day investigation.
-The original classifier’s 379/33 result remains visible; the review does not claim a proven
-common root cause for the five anomalies.
+The approved review splits the 412 unique source reports into 379 shared-parser reports and
+33 booking-v3 form-hint reports. Five desk-flagged reports stay in the parser ticket as investigation notes.
+The review follows the exported classifier’s 379/33 result. The five anomalies do not establish
+an independent cause; the separate investigation issue is closed as duplicate.
 
 - [Signed decision source](src/routes/kb/decisions/0002-dedupe-by-cause/+page.svx)
 - [Rendered decision HTML](rendered/kb/decisions/0002-dedupe-by-cause.html)
