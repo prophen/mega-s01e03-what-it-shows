@@ -1,0 +1,89 @@
+---
+layout: runbook
+title: '0002 · Split #4471 by evidence; merge by cause'
+owner: Nikema Prophet and Codex
+status: accepted
+reviewed: 2026-10-28
+signature: 'Nikema Prophet / Codex · S01E03 · 2026-10-28'
+---
+
+<script>
+  import ReviewSummary from '#lib/kb/ReviewSummary.svelte';
+  import CauseTable from '#lib/kb/CauseTable.svelte';
+  import QueueTimeline from '#lib/kb/QueueTimeline.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+</script>
+
+## Decision
+
+This record replaces the subject-only rule in [decision 0001](/kb/decisions/0001-dedupe-by-subject).
+Keep that accepted record as history. Split #4471 into a shared-parser ticket, a booking-v3
+hint ticket, and a time/day investigation. Do not describe the whole ticket as one known bug
+with one queued fix. The export contains support reports and KB logic, not the product source
+or a working product; reproductions in our tickets are plans to verify, not tests we ran.
+
+<ReviewSummary />
+
+## Why these are separate
+
+The shared parser reads month first. Day-first tenants entering dates through app/email or
+booking-v2 can get the month and day swapped. For example, harbour.dental report R-41200
+describes 7 April becoming 4 July. Use the tenant directory and the actual input path;
+the browser locale and intake tag are guesses. Both app and email can reach the same cause.
+
+booking-v3 instead prints MM/DD/YYYY while its form reads dates in the tenant’s day-first
+order. That misleading instruction is a separate defect affecting alder.physio, copper.studio,
+and pale.harbour form reports. Fixing the shared parser alone does not correct the hint.
+For the same tenant, a form report and an app report can have different causes.
+
+The five desk-flagged reports need investigation outside those confirmed date-order paths.
+R-41202 and R-41620 describe adjacent days; R-41209 describes June-only shifts; R-41344
+describes different days for Lisbon and Toronto. R-41236 says an invite arrived before the
+booking, without giving timestamps. A timezone, DST or date-only conversion defect is plausible,
+but the export does not establish that all five share a root cause. Request the original
+timestamps, timezone IDs, inputs and invite/delivery logs. Split this investigation further
+if the evidence shows different causes. Do not mark it fixed with either date-order fix.
+
+## Audit the code’s original grouping
+
+This live table preserves what the supplied classifier actually computes. Its parser count
+includes the five investigation reports; its footnote exposes that limitation. Intake labels
+disagree with the code on 38 reports: 23 parser reports tagged hint and 15 hint reports tagged
+parser. Counting tags would give the wrong split. Deduplicate IDs before counting anything.
+
+<CauseTable ticket={4471} />
+
+## What the queue shows
+
+<QueueTimeline ticket={4471} />
+
+The received and merged bars measure different events. Reports arrived from April onward.
+The week beginning 29 June has a large merge bar because older reports were filed together;
+it is not evidence that the defect started in July or that reports suddenly surged then.
+The latest report arrived on 4 October. A reviewed date or a known label does not prove a fix.
+
+## The desk’s next report
+
+1. Read the body and capture tenant, product, input channel, form version, original input,
+   expected date, actual date and timezone. Look up tenant locale; do not substitute browser locale.
+2. Compare the failure mechanism with the candidate ticket. Merge only when evidence supports
+   the same cause. Similar subjects can conceal different problems; different subjects can
+   describe one problem. Subject matching may suggest a candidate but cannot decide a merge.
+3. Keep unknown tenants, unexplained one-day shifts and missing evidence separate pending
+   investigation. A missing cause is not a shared cause. Ask for evidence rather than merge by default.
+4. Add each unique report ID once and retain its original received time and merge history.
+   Update counts as reports arrive. Recheck both input paths after a fix; split or reopen on
+   contradictory evidence. Do not close the other ticket merely because one fix shipped.
+
+The old triage page was reviewed in June 2024, beyond the KB’s 180-day review window.
+Re-read it against live views rather than trusting its accepted label. The September 2026
+incident page is recent but contradicted by its own computed table. Fresh prose can still be wrong.
+
+## Verification and limits
+
+`node scripts/analyze.mjs` reproduces the counts and weekly buckets in `evidence/analysis.json`.
+The page imports the real components, tenant glob, report data and signature function.
+Its source is this .svx; the built HTML and assets show what the desk will see. Rebuild after
+changing the export. These counts cover the 4 October snapshot, not a live support connection.
+
+<RenderStamp {signature} />
