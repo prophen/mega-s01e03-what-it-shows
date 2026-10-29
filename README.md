@@ -58,3 +58,7 @@ Counts are based on the supplied 4 October export; no live product tests were po
 Filed GitHub issues: [parser #1](https://github.com/prophen/mega-s01e03-what-it-shows/issues/1),
 [form hint #2](https://github.com/prophen/mega-s01e03-what-it-shows/issues/2),
 [time/day investigation #3](https://github.com/prophen/mega-s01e03-what-it-shows/issues/3).
+
+Engineering update (5 October): parser fixed (`fix(dates): parse dd/mm for eu locales`),
+closed completed; hint won’t fix because booking-v3 was retired, closed not planned.
+The report counts remain historical evidence.

@@ -84,6 +84,17 @@ The old triage page was reviewed in June 2024, beyond the KB’s 180-day review 
 Re-read it against live views rather than trusting its accepted label. The September 2026
 incident page is recent but contradicted by its own computed table. Fresh prose can still be wrong.
 
+## Engineering outcome · 5 October
+
+The course’s engineering update closes #4471 with two different outcomes:
+
+- Parser: **fixed**, `fix(dates): parse dd/mm for eu locales`. Parser issue #1 is closed as completed.
+- Hint: **won’t fix**, because booking-v3 was retired. Form-hint issue #2 is closed as not planned.
+
+The hint was not fixed by the parser commit. Its affected form was retired, which is a different disposition.
+The original 379/33 report counts remain historical evidence. Apply the updated triage rule to future reports;
+a similar subject alone does not establish a recurrence. The update is engineering’s report, not a product test run by this harness.
+
 ## Verification and limits
 
 `node scripts/analyze.mjs` reproduces the counts and weekly buckets in `evidence/analysis.json`.
